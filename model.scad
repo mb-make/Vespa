@@ -4,9 +4,18 @@ nothing = 0.025;
 
 module vespa()
 {
-    translate([1.5, 75, 0])
-    mirror([0, 1, 0])
-    import("vespa_repaired.stl", center=true);
+    scale(0.8)
+    union()
+    {
+        translate([1.5, 75, 0])
+        mirror([0, 1, 0])
+        import("vespa_repaired.stl", center=true);
+
+        // Additional support structure
+        translate([15, 20, 1.5])
+        rotate([0, 0, -45])
+        cube([10, 4, 3], center=true);
+    }
 }
 
 module vespa_bbox()
@@ -22,16 +31,11 @@ module vespa_half()
         {
             vespa();
 
-            // Additional support structure
-            translate([15, 20, 1.5])
-            rotate([0, 0, -45])
-            cube([10, 4, 3], center=true);
-
             // Key-ring
-            keyring_height = 3;
-            keyring_radius_outer = 13;
-            keyring_radius_inner = 11;
-            translate([20, 10, 0])
+            keyring_height = 4;
+            keyring_radius_outer = 12;
+            keyring_radius_inner = keyring_radius_outer - 3;
+            translate([17, 6, 0])
             difference()
             {
                 cylinder(
@@ -52,7 +56,7 @@ module vespa_half()
 
 module vespa_projection()
 {
-    vespa_half();
+    //vespa_half();
     mirror([1, 0, 0])
     vespa_half();
 }
