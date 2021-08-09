@@ -56,7 +56,7 @@ module vespa_half()
 
 module vespa_projection()
 {
-    //vespa_half();
+    vespa_half();
     mirror([1, 0, 0])
     vespa_half();
 }
