@@ -1,0 +1,3 @@
+[submodule "slic3r-config"]
+	path = slic3r-config
+	url = git@github.com:not-enough-time-for-all-these-projects/slic3r-config.git
